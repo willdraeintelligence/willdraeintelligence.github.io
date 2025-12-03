@@ -1,16 +1,912 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Willdrae Intelligence LTD</title>
+  <meta charset="UTF-8" />
+  <title>Willdrae Intelligence Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Willdrae Intelligence Ltd – AI-driven engineering, research and analytics across CAD, product design, data science, machine learning, and automation."
+  />
+  <style>
+    :root {
+      --bg: #05060b;
+      --bg-elevated: #0c0f18;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.1);
+      --accent-strong: #22d3ee;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --card-radius: 18px;
+      --max-width: 1100px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22d3ee, #4f46e5 55%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+    }
+
+    .logo-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 9px 25px rgba(37, 99, 235, 0.6);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(37, 99, 235, 0.9);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 1.75rem auto 2.5rem;
+      padding: 0 1.25rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-strong);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      margin-bottom: 0.9rem;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse 1.9s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+      70% {
+        transform: scale(1.5);
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3.1vw + 1.5rem, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span.gradient {
+      background: linear-gradient(135deg, #38bdf8, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 32rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.7rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-primary {
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #4f46e5, #22d3ee);
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(15, 118, 220, 0.8);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .hero-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 55px rgba(37, 99, 235, 0.95);
+    }
+
+    .hero-secondary {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-secondary span.arrow {
+      font-size: 1.1rem;
+      transform: translateY(1px);
+    }
+
+    .hero-footnote {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1), transparent),
+        radial-gradient(circle at bottom, rgba(79, 70, 229, 0.2), rgba(15, 23, 42, 0.95));
+      border-radius: 24px;
+      padding: 1.5rem 1.35rem;
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.1rem;
+      gap: 0.75rem;
+    }
+
+    .badge {
+      padding: 0.22rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .hero-chip {
+      padding: 0.6rem 0.65rem;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.92);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .chip-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+    }
+
+    .chip-value {
+      font-size: 0.86rem;
+    }
+
+    .chip-tag {
+      font-size: 0.7rem;
+      color: #a5b4fc;
+    }
+
+    .sections {
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+      padding: 0 1.25rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.4rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--card-radius);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      padding: 1rem 1rem 1.05rem;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.82rem;
+      color: #e5e7eb;
+    }
+
+    .card ul li {
+      margin-bottom: 0.25rem;
+      display: flex;
+      gap: 0.3rem;
+      align-items: flex-start;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      font-size: 0.75rem;
+      color: var(--accent-strong);
+      margin-top: 0.1rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill-row span {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: left;
+    }
+
+    .summary-table th {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+
+    .summary-table td {
+      color: #e5e7eb;
+    }
+
+    .summary-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-left {
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.32), transparent),
+        rgba(15, 23, 42, 0.96);
+      border-radius: var(--card-radius);
+      border: 1px solid rgba(96, 165, 250, 0.5);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-left h3 {
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-left p {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-field {
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-field span {
+      color: var(--muted);
+      margin-right: 0.25rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      font-size: 0.72rem;
+    }
+
+    .badge-row span {
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .contact-right {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-right strong {
+      color: #e5e7eb;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.2rem 1.25rem 1.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-inner span {
+      opacity: 0.85;
+    }
+  </style>
 </head>
 <body>
-    <h1>WILLDRAE INTELLIGENCE LTD</h1>
-    <p>AI • Engineering • Research & Development</p>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-mark">WI</div>
+          <div>
+            <div>Willdrae Intelligence Ltd</div>
+            <div class="logo-sub">AI-Driven Engineering & Analytics</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#domains">Core Domains</a>
+          <a href="#contact">Contact</a>
+          <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Request a project call
+          </button>
+        </nav>
+      </div>
+    </header>
 
-    <h3>About Us</h3>
-    <p>We are a UK-based AI and engineering research company focused on building intelligent systems and next-generation design technologies.</p>
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="hero-tag">
+            <div class="pulse-dot"></div>
+            Willdrae Intelligence Ltd
+          </div>
+          <h1 class="hero-title">
+            <span class="gradient">Engineering, data and AI</span><br />
+            fused into one intelligence layer.
+          </h1>
+          <p class="hero-subtitle">
+            Willdrae Intelligence Ltd helps engineering teams, labs and SMEs turn
+            mechanical design, sensor data and business operations into
+            <strong>actionable intelligence</strong> – from CAD and test rigs to
+            data science, machine learning and automation.
+          </p>
+          <div class="hero-highlight">
+            <div class="pill">Mechanical & product design</div>
+            <div class="pill">Data science & machine learning</div>
+            <div class="pill">R&D and experiment support</div>
+            <div class="pill">Automation, IoT & dashboards</div>
+          </div>
+          <div class="hero-actions">
+            <button
+              class="hero-primary"
+              onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+            >
+              Schedule a free technical discussion
+            </button>
+            <div class="hero-secondary">
+              or explore our full capabilities
+              <span class="arrow">↘</span>
+            </div>
+          </div>
+          <div class="hero-footnote">
+            From one-off prototypes to long-term research collaborations.
+          </div>
+        </div>
 
-    <h3>Contact</h3>
-    <p>Email: info@willdrae.co.uk</p>
+        <aside class="hero-card">
+          <div class="hero-card-header">
+            <div>
+              <div class="badge">Capability Snapshot</div>
+              <div class="hero-card-title">
+                From CAD and test rigs to sensor analytics and AI pipelines.
+              </div>
+            </div>
+          </div>
+          <div class="hero-grid">
+            <div class="hero-chip">
+              <div class="chip-label">Engineering</div>
+              <div class="chip-value">CAD, FEA & test rigs</div>
+              <div class="chip-tag">SolidWorks · Fusion 360</div>
+            </div>
+            <div class="hero-chip">
+              <div class="chip-label">Data & AI</div>
+              <div class="chip-value">Analytics & ML models</div>
+              <div class="chip-tag">Python · ML · CV · NLP</div>
+            </div>
+            <div class="hero-chip">
+              <div class="chip-label">Automation</div>
+              <div class="chip-value">IoT & control systems</div>
+              <div class="chip-tag">Raspberry Pi · ESP32</div>
+            </div>
+            <div class="hero-chip">
+              <div class="chip-label">Delivery</div>
+              <div class="chip-value">Reports, dashboards, docs</div>
+              <div class="chip-tag">Power BI · SOPs · White papers</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="sections">
+        <!-- SERVICES -->
+        <section id="services">
+          <div class="section-heading">
+            <h2>Service portfolio</h2>
+            <p>
+              A single partner across mechanical design, data science, machine
+              learning, automation and technical documentation – so your ideas
+              move from concept to validated reality.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h3>Mechanical & Product Design</h3>
+              <div class="card-sub">
+                CAD models, assemblies, rigs and simulation for real-world
+                hardware.
+              </div>
+              <ul>
+                <li>3D CAD modelling (SolidWorks, Fusion 360, AutoCAD)</li>
+                <li>2D drawings, BOM preparation and documentation</li>
+                <li>Mechanical assemblies & custom test rig design</li>
+                <li>Design for manufacture (DFM) & assembly (DFA)</li>
+                <li>Reverse engineering & part optimisation</li>
+                <li>Structural / motion / FEA simulation</li>
+                <li>Exploded views, visualisations & animations</li>
+              </ul>
+              <div class="pill-row">
+                <span>Prototyping</span><span>Rigs</span><span>FEA</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Data Science & Machine Learning</h3>
+              <div class="card-sub">
+                From raw sensor or business data to models, insights and
+                deployed intelligence.
+              </div>
+              <ul>
+                <li>Data cleaning, processing & exploratory analysis</li>
+                <li>Visualisation (Matplotlib, Power BI, Tableau)</li>
+                <li>Predictive models, forecasting & time-series</li>
+                <li>ML for classification, regression & clustering</li>
+                <li>Computer vision & image processing</li>
+                <li>NLP for technical and operational text</li>
+                <li>End-to-end analytics & reporting pipelines</li>
+              </ul>
+              <div class="pill-row">
+                <span>Python</span><span>Analytics</span><span>ML</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Research & Experiment Support</h3>
+              <div class="card-sub">
+                Flexible support for universities, labs and R&D teams.
+              </div>
+              <ul>
+                <li>Experiment setup and instrumentation planning</li>
+                <li>DAQ, sensor integration & IoT data collection</li>
+                <li>Result analysis & scientific visualisation</li>
+                <li>Feasibility studies & proof-of-concept builds</li>
+                <li>White papers, grant documents & reports</li>
+                <li>Literature review & technology mapping</li>
+                <li>Prototype testing and evaluation support</li>
+              </ul>
+              <div class="pill-row">
+                <span>Universities</span><span>Labs</span><span>R&D teams</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Automation, IoT & Dashboards</h3>
+              <div class="card-sub">
+                Connect devices, data and decisions into one live system.
+              </div>
+              <ul>
+                <li>Raspberry Pi / Arduino / ESP32 development</li>
+                <li>IoT sensor networks & telemetry dashboards</li>
+                <li>Smart device prototyping & low-power control</li>
+                <li>Predictive monitoring & maintenance systems</li>
+                <li>Web dashboards & control interfaces</li>
+                <li>Python / Flask / Django tooling for engineers</li>
+              </ul>
+              <div class="pill-row">
+                <span>IoT</span><span>Edge</span><span>Dashboards</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Business, Excel & Process Support</h3>
+              <div class="card-sub">
+                Clean data, automated spreadsheets and clarity for operations.
+              </div>
+              <ul>
+                <li>Data entry, cleaning, deduplication & validation</li>
+                <li>Advanced Excel models, dashboards & templates</li>
+                <li>VBA/macros and Office automation for teams</li>
+                <li>KPI, cost and resource tracking dashboards</li>
+                <li>Timesheet, utilisation & operational reporting</li>
+                <li>Cloud file organisation & documentation</li>
+              </ul>
+              <div class="pill-row">
+                <span>Excel</span><span>BI</span><span>Operations</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Documentation, Training & Consulting</h3>
+              <div class="card-sub">
+                Make complex systems understandable, repeatable and teachable.
+              </div>
+              <ul>
+                <li>Technical reports, SOPs & user manuals</li>
+                <li>Research paper formatting & visualisation</li>
+                <li>Design reviews & prototype feedback</li>
+                <li>AI, data and CAD training for engineers</li>
+                <li>STEM education and lab kit support</li>
+                <li>Proposal writing for R&D and grant funding</li>
+              </ul>
+              <div class="pill-row">
+                <span>Docs</span><span>Training</span><span>Consulting</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CORE DOMAINS SUMMARY -->
+        <section id="domains">
+          <div class="section-heading">
+            <h2>Core domains we cover</h2>
+            <p>
+              A summary of how Willdrae Intelligence Ltd spans engineering,
+              analytics and automation for your organisation.
+            </p>
+          </div>
+          <div class="card">
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th>Core Domain</th>
+                  <th>Focus</th>
+                  <th>Example Outcomes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Engineering Design</td>
+                  <td>Mechanical, CAD, prototyping</td>
+                  <td>3D models, drawings, rigs, FEA studies</td>
+                </tr>
+                <tr>
+                  <td>Data Science & AI</td>
+                  <td>Analytics, ML, optimisation</td>
+                  <td>Predictive models, insights, dashboards</td>
+                </tr>
+                <tr>
+                  <td>Research Support</td>
+                  <td>Experiments, DAQ, documentation</td>
+                  <td>Setup, analysis, white papers, grant reports</td>
+                </tr>
+                <tr>
+                  <td>IT & Automation</td>
+                  <td>IoT, integration, digital tools</td>
+                  <td>Sensor systems, web tools, control interfaces</td>
+                </tr>
+                <tr>
+                  <td>Administrative & Reporting</td>
+                  <td>Data entry, Excel, reporting</td>
+                  <td>Clean datasets, KPI packs, automation</td>
+                </tr>
+                <tr>
+                  <td>Consulting & Training</td>
+                  <td>Knowledge transfer, optimisation</td>
+                  <td>Workshops, training, design & process reviews</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <div class="section-heading">
+            <h2>Contact & next steps</h2>
+            <p>
+              Share a short description of your project, and we’ll respond with
+              a focused technical perspective – not generic sales speak.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-left">
+              <h3>Start a conversation with Willdrae Intelligence Ltd</h3>
+              <p>
+                Ideal for engineering teams, SMEs, labs and individuals who need
+                a single technical partner across CAD, data, AI and automation.
+              </p>
+              <div class="contact-meta">
+                Please include a short summary of your idea, current data or
+                hardware, and any deadlines you’re working with.
+              </div>
+              <div class="contact-field">
+                <span>Email:</span> <strong>contact@willdrae.com</strong>
+              </div>
+              <div class="contact-field">
+                <span>Company:</span> Willdrae Intelligence Ltd (United Kingdom)
+              </div>
+              <div class="badge-row">
+                <span>Remote-first</span>
+                <span>Project-based or retainer</span>
+                <span>R&D friendly</span>
+              </div>
+            </div>
+
+            <div class="contact-right">
+              <p>
+                <strong>How we typically work</strong><br />
+                • Initial clarification call to understand your problem space.<br />
+                • We propose a compact, technically realistic plan – from
+                prototype to production.<br />
+                • Work can range from a few focused days to long-term embedded
+                support in your team.
+              </p>
+              <br />
+              <p>
+                <strong>Example collaborations</strong><br />
+                • Designing and instrumenting a new test bench or prototype.<br />
+                • Turning raw sensor logs into robust dashboards and models.<br />
+                • Supporting an MSc/PhD/industry team with analysis,
+                visualisation and publication-grade documentation.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© <span id="year"></span> Willdrae Intelligence Ltd. All rights reserved.</span>
+        <span>“From design to data – Willdrae Intelligence delivers intelligent engineering,
+          research and analytical solutions for the next generation of innovation.”
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
